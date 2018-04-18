@@ -55,7 +55,7 @@ with tf.Session() as sess:
 	sess.run(init)
 	for _ in range(500):
 		sess.run(train_step, feed_dict = {x: x_train, y: y_train, keep_prob: .5})
-		if _%50:
+		if _%50 == 0:
 			train_loss = sess.run(merged, feed_dict = {x: x_train, y: y_train, keep_prob: 1.})
 			test_loss = sess.run(merged, feed_dict = {x: x_test, y: y_test, keep_prob: 1.})
 			train_writer.add_summary(train_loss, _)
